@@ -22,6 +22,7 @@ void spiral(vector<vector<int>> v)
             }
             top++;
         }
+        //top -> bottom
         else if(direction==1)
         {
             for(int row=top; row<=bottom; row++)
@@ -30,6 +31,7 @@ void spiral(vector<vector<int>> v)
             }
             right--;
         }
+        //right -> left
         else if(direction==2)
         {
             for(int col=right; col>=left; col--)
@@ -38,6 +40,7 @@ void spiral(vector<vector<int>> v)
             }
             bottom--;
         }
+        // bottom -> top
         else
         {
             for(int row=bottom; row>=top; row--)
