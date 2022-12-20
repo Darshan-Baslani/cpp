@@ -3,24 +3,29 @@
 #include<vector>
 using namespace std;
 
-int main()
-{
+int main(){
 
-    vector<int> arr = {1,2,4,6,8,9};
+    vector<int> arr = {-1,0,1,2,3};
     int x;
-    cout<<"Enter x:"; cin>>x;
+    cout<<"Enter x: "; cin>>x;
+    int left=0;
+    int right = arr.size()-1;
     int indicator=0;
-    for(int i=0; i<arr.size(); i++)
-    {
-        for(int j=0; j<arr.size(); j++)
-        {
-            if(arr[i] + arr[j] == x) indicator=1;
-            if(indicator==1) cout<<arr[i]<<" "<<arr[j]<<endl;
-            indicator=0;    
-            
+    while(left<right){
+
+        if(arr[left]+arr[right] == x){
+            cout<<"Yes";
+            indicator=1;
+            break;
+        }else if(arr[left]+arr[right] < x){
+            left++;
+        }else{
+            right--;
         }
-        
+
     }
+
+    if(indicator==0) cout<<"No";
 
     return 0;
 }
