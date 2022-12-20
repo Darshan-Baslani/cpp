@@ -9,7 +9,7 @@ vector<int> merge_sort(vector<int> &arr1, vector<int> &arr2)
     vector<int> ans;
     while((i+j)<temp)
     {
-        if(arr1[i]<=arr2[j] && i!=arr1.size())
+        if(arr1[i]<=arr2[j] and i!=arr1.size())
         {
             ans.push_back(arr1[i]);
             i++;
