@@ -9,7 +9,7 @@
       "stopAtEntry": false,
       "externalConsole": true,
       "cwd": "d:/cpp/loops",
-      "program": "D:\\cpp\\array\\",
+      "program": "D:\\cpp\\",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
