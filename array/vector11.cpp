@@ -5,7 +5,7 @@ using namespace std;
 
 int main(){
 
-    vector<int> arr = {-1,0,1,2,3};
+    vector<int> arr = {2,3,5,5,9};
     int x;
     cout<<"Enter x: "; cin>>x;
     int left=0;
@@ -16,6 +16,7 @@ int main(){
         if(arr[left]+arr[right] == x){
             cout<<"Yes";
             indicator=1;
+            
             break;
         }else if(arr[left]+arr[right] < x){
             left++;
