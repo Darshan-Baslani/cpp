@@ -8,7 +8,7 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/cpp/loops",
+      "cwd": "d:/cpp/",
       "program": "D:\\cpp\\",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
