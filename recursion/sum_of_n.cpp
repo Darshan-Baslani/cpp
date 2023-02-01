@@ -3,8 +3,8 @@ using namespace std;
 
 int sum_of_n(int n) {
     int result=0;
-    if(n<1)
-        return result;
+    if(n>=0 and n<=9)
+        return n;
 
     result += n%10;
     return result + sum_of_n(n/10);
