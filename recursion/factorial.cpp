@@ -10,7 +10,7 @@ int f(int n) {
 
 int main() {
 
-    cout<<f(5)<<endl;
+    cout<<f(2)<<endl;
 
     return 0;
 }
