@@ -15,27 +15,25 @@ Sample Output: SUM(4, 1) = 10
 #include<iostream>
 using namespace std;
 
-int fact(int n) {
-    if(n==1) return 1;
-
-    return n+(fact(n-1));
+int func(int n, int &ans) {
+    if(n==0)    return n;
+    return ans + n + func(n-1, ans);
 }
-int f(int n,int m) {
-    if(m==1){
-        return fact(n);
-    }
 
+int f(int n, int m) {
+    int ans=0;
+    if(n==0) return 0; 
+    if(m>1)
+        return f(f(n,m-1),1);
+    return func(n, ans);
 }
+
 int main() {
 
-    int n,m;
-    cout<<"Enter N and M: "; cin>>n>>m;
-    
-    if(m==1){
-        fact(n);
-    }else{
-        f(f(n,m-1),m);
-    }
+    int m,n;
+    cout<<"Enter n and m: "; cin>>n>>m;
+
+    cout<<f(n,m);
 
     return 0;
 }
