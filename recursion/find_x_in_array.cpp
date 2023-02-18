@@ -2,7 +2,7 @@
 using namespace std;
 
 bool f(int *arr, int x, int n,int idx) {
-    if(idx == (n-1))
+    if(idx == n)
         return false;
     if(arr[idx] == x)
         return true;
