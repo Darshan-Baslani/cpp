@@ -8,61 +8,68 @@
 8 = t,u,v
 9 = w,x,y,z
  */
-#include<iostream>
+#include<iostream> 
+#include<vector>
 using namespace std; 
 
-void f(string x, int i,string ans) {
+void f(string x, int i,string ans, vector<string> &v) {
     if(i == x.length()) {
-        cout<<ans<<" ";
+        v.push_back(ans);
         return;
     }
-    f(x,i+1,ans + x[i]);
-    f(x,i+1,ans);
+    switch(x[i]) {
+        case '2':
+            f(x, i+1, ans+'a', v);
+            f(x, i+1, ans+'b', v);
+            f(x, i+1, ans+'c', v);
+            break;
+        case '3':
+            f(x, i+1, ans+'d', v);
+            f(x, i+1, ans+'e', v);
+            f(x, i+1, ans+'f', v);
+            break;
+        case '4':
+            f(x, i+1, ans+'g', v);
+            f(x, i+1, ans+'h', v);
+            f(x, i+1, ans+'i', v);
+            break;
+        case '5':
+            f(x, i+1, ans+'j', v);
+            f(x, i+1, ans+'k', v);
+            f(x, i+1, ans+'l', v);
+            break;
+        case '6':
+            f(x, i+1, ans+'m', v);
+            f(x, i+1, ans+'n', v);
+            f(x, i+1, ans+'o', v);
+            break;
+        case '7':
+            f(x, i+1, ans+'p', v);
+            f(x, i+1, ans+'q', v);
+            f(x, i+1, ans+'r', v);
+            f(x, i+1, ans+'s', v);
+            break;
+        case '8':
+            f(x, i+1, ans+'t', v);
+            f(x, i+1, ans+'u', v);
+            f(x, i+1, ans+'v', v);
+            break;
+        case '9':
+            f(x, i+1, ans+'w', v);
+            f(x, i+1, ans+'x', v);
+            f(x, i+1, ans+'y', v);
+            f(x, i+1, ans+'z', v);
+            break;
+    }
 }
 
 int main() {
-
+    vector<string> v;
     string x = "23";
-    string s2 = "abc";
-    string s3 = "def";
-    string s4 = "ghi";
-    string s5 = "jkl";
-    string s6 = "mno";
-    string s7 = "pqrs";
-    string s8 = "tuv";
-    string s9 = "wxyz";
-    //f("",0,"");
-    for(int i=0; i<x.length(); i++) {
-        switch(x[i]) {
-            case '2':
-                f(s2,0,"");
-                break;
-            case '3':
-                f(s3,0,"");
-                break;
-            case '4':
-                f(s4,0,"");
-                break;
-            case '5':
-                f(s5,0,"");
-                break;
-            case '6':
-                f(s6,0,"");
-                break;
-            case '7':
-                f(s7,0,"");
-                break;
-            case '8':
-                f(s8,0,"");
-                break;
-            case '9':
-                f(s9,0,"");
-                break;
-            default:
-                cout<<"Invalid input";
-                break;
-        }
+    f(x, 0, "", v);
+    for(int i=0; i<v.size(); i++) {
+        cout<<v[i]<<" ";
     }
-
+    cout<<endl;
     return 0;
 }
