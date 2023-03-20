@@ -33,7 +33,7 @@ void merge(int arr[], int l, int m, int r) {
     }
 
 }
-
+/*
 void mergeSort(int arr[], int l, int r) {
     if(l>=r)    return;
 
@@ -41,13 +41,13 @@ void mergeSort(int arr[], int l, int r) {
     mergeSort(arr,l,mid);
     mergeSort(arr,mid+1,r);
     merge(arr,l,mid,r);
-}
+}*/
 
 int main() {
 
     int arr[] = {1,3,7,9,2,4,6,8};
-    int n = (sizeof(arr) / sizeof(arr[0])) - 1;
-    mergeSort(arr,0,n);
+    int n = (sizeof(arr) / sizeof(arr[0])) - 1,m=n/2;
+    merge(arr,0,m,n);
 
     for(int i=0; i<n; i++) {
         cout<<arr[i]<<" ";
