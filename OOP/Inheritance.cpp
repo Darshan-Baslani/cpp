@@ -24,3 +24,4 @@ int main() {
 // Like multiple parent inheritance(One child class inherit multiple parent class)
 // Multi level inheritance (parent class -> child class -> grand child class -> great grand child class...)
 // Hierarchichal inheritance (there are multiple child class of one parent class)
+// Hybrid inheritance (khichdi of inheritance)
