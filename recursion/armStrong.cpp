@@ -9,7 +9,7 @@ bool armStrong(int n, int &ans) {
     armStrong(n/10,ans);
     return ans==n?true:false;
 }
-
+        
 int main() {
 
     int n;

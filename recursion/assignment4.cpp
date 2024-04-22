@@ -9,9 +9,6 @@ Output2 : No
 using namespace std;
 
 bool isprime(int x, int i) {
-    if(n==1) {
-        return false;
-    }
     if(i==x) {
         return true;
     }
@@ -19,7 +16,7 @@ bool isprime(int x, int i) {
         return false;
     }
     
-    isprime(x,i+1);
+    return isprime(x,i+1);
 
 }
 
