@@ -9,7 +9,7 @@ public:
   Node(int value) { val = value; }
 };
 
-void insert_at_tail(Node *head, int value) {
+void insert_at_tail(Node *&head, int value) {
   Node *new_node = new Node(value);
   if (head == NULL) {
     head = new_node;
@@ -32,8 +32,17 @@ void display(Node *head) {
   cout << endl;
 }
 
-void reverse_list(Node *head) {
-
+void reverse_list(Node *&head) {
+  Node *prev = NULL;
+  Node *curr = head;
+  Node *next = NULL;
+  while (curr != NULL) {
+    next = curr->next;
+    curr->next = prev;
+    prev = curr;
+    curr = next;
+  }
+  head = prev;
 }
 
 int main() {
@@ -49,7 +58,7 @@ int main() {
 
   display(head);
 
-  remove_duplicates(head);
+  reverse_list(head);
 
   display(head);
 
