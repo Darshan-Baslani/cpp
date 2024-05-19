@@ -5,10 +5,14 @@ class Node {
 public:
   int val;
   Node *next;
-  Node *prev;
+  Node *tail;
 
-  Node() {}
-  Node(int value) : val(value), prev(NULL) {}
+  Node(){} 
+  Node(int value){
+    val = value;
+    tail = NULL;
+    next = NULL;
+  }
 };
 
 void display(Node *head) {
@@ -20,19 +24,22 @@ void display(Node *head) {
   cout << endl;
 }
 
-void insertion_at_tail(Node *head, int value) {
+void insertion_at_tail(Node *&head, int value) {
   Node *new_node = new Node(value);
-  new_node->next = NULL;
+  if(head == NULL) {
+    head = new_node;
+    return;
+  }
   Node *temp = head;
   while (temp->next != NULL) {
     temp = temp->next;
   }
-  new_node->prev = temp;
+  new_node->next = NULL;
   temp->next = new_node;
 }
 
 int main() {
-  Node *head = new Node(10);
+  Node *head = NULL;
   insertion_at_tail(head, 11);
   insertion_at_tail(head, 12);
   insertion_at_tail(head, 13);
