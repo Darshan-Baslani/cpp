@@ -52,12 +52,27 @@ void insertion_at_k(Node *&head, int value, int k) {
   }
   Node *new_node = new Node(value);
   Node *temp = head;
-  for(int i=0; i<=k; i++) {
+  for(int i=0; i<k-1; i++) {
     temp = temp->next;
   }
-  new_node->prev = temp->prev;
-  new_node->next = temp;
-  temp->prev = new_node;
+  new_node->next = temp->next;
+  temp->next = new_node;
+  new_node->prev = temp;
+}
+
+void delete_at_k(Node *&head, int k) {
+  if(k == 0) {
+    head = head->next;
+    free(head->prev);
+  }
+  Node *temp = head;
+  for(int i=0; i<k-1; i++) {
+    temp = temp->next;
+  }
+  Node *node_to_delete = temp->next;
+  temp->next = node_to_delete->next;
+  node_to_delete->next->prev = temp;
+  free(node_to_delete);
 }
 
 int main() {
@@ -71,6 +86,9 @@ int main() {
   display(head);
 
   insertion_at_k(head, 20, 3);
+  display(head);
+
+  delete_at_k(head, 3);
   display(head);
   return 0;
 }
