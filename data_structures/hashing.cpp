@@ -45,8 +45,10 @@ int main() {
   Hashing hash = Hashing(10);
   hash.add_val(10);
   hash.add_val(11);
+  hash.add_val(11);
   hash.add_val(12);
 
+  cout<<*hash.search_val(11)<<endl;
   hash.delete_val(11);
   hash.delete_val(11);
 
