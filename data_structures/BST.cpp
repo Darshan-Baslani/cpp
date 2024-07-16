@@ -4,7 +4,7 @@ using namespace std;
 class Node{
 public:
     int val;
-    Node *left, *right;
+    Node *left, *right, *parent;
 
     Node(int value) : val(value){}
 };
@@ -22,6 +22,17 @@ public:
         root = insert_private(root, value);
     }
 
+    Node* search(Node* root, int value){
+        if(root==NULL or root->val==value){
+            return root;
+        }
+        if(value < root->val) {
+            return search(root->left, value);
+        }else{
+            return search(root->right, value);
+        }
+    }
+
 private:
     Node* insert_private(Node *root, int value){
         if(root == NULL){
@@ -29,22 +40,80 @@ private:
         }
         if(value <= root->val) {
             root->left = insert_private(root->left, value);
+            root->left->parent = root;
         }else{
             root->right = insert_private(root->right, value);
+            root->right->parent = root;
         }
         return root;
     }
 };
 
+
+Node* minimum(Node *root) {
+    while(root->left !=  NULL) {
+        root = root->left;
+    }
+    return root;
+}
+
+Node* maximum(Node *root) {
+    while(root->right !=  NULL) {
+        root = root->right;
+    }
+    return root;
+}
+
+Node* successor(Node* root){
+    // finding smallest value which is greater than root node
+    if(root->right != NULL) {
+        return minimum(root->right);
+    }
+    Node* temp = root;
+    while(root!=NULL and root->right==temp) {
+        temp = root;
+        root = root->parent;
+    }
+    return root;
+}
+
+Node* predecessor(Node* root){
+    // finding greatest value which is smaller than root node
+    if(root->left != NULL) {
+        return maximum(root->left);
+    }
+    Node* temp = root->parent;
+    while(temp!=NULL and temp==root->left) {
+        root = temp;
+        temp = temp->parent;
+    }
+    return temp;
+}
+
+
 int main() {
 
-    BST *root = new BST(10);
-    root->insert(11);
-    root->insert(9);
+    BST *tree = new BST(10);
+    tree->insert(11);
+    tree->insert(9);
 
-    cout << root->root->val << endl;
-    cout << root->root->left->val << endl;
-    cout << root->root->right->val << endl;
+    // cout << tree->root->val << endl;
+    // cout << tree->root->left->val << endl;
+    // cout << tree->root->right->val << endl;
+
+    // cout<< (tree->search(tree->root, 9))->val << endl;
+
+    tree->insert(15);
+    tree->insert(16);
+    tree->insert(13);
+
+    Node* a = tree->root->right->right->right;
+    // cout << a->parent->val << endl;
+
+
+    cout<< "a : " << a->val << endl;
+    // cout << "Successor : " << successor(a)->val << endl;
+    cout << "Predecessor : " << predecessor(a)->val << endl;
 
     return 0;
 }
