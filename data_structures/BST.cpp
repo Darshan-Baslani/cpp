@@ -90,6 +90,14 @@ Node* predecessor(Node* root){
     return temp;
 }
 
+void deleteNode(BST *bst, Node *node) {
+    if(node->right == NULL and node->left == NULL) {
+        delete node;
+        // we set the pointer to NULL to avoid dangling pointer
+        node = NULL;
+    }
+}
+
 
 int main() {
 
@@ -107,13 +115,15 @@ int main() {
     tree->insert(16);
     tree->insert(13);
 
-    Node* a = tree->root->right->right->right;
-    // cout << a->parent->val << endl;
+    /*Node* a = tree->root->right->right->right;*/
+    /*// cout << a->parent->val << endl;*/
+    /*cout<< "a : " << a->val << endl;*/
+    /*// cout << "Successor : " << successor(a)->val << endl;*/
+    /*cout << "Predecessor : " << predecessor(a)->val << endl;*/
 
-
-    cout<< "a : " << a->val << endl;
-    // cout << "Successor : " << successor(a)->val << endl;
-    cout << "Predecessor : " << predecessor(a)->val << endl;
+    Node *node_containing_13 = tree->search(tree->root,13);
+    cout<<tree->search(tree->root,13)->val;
+    deleteNode(tree, node_containing_13);
 
     return 0;
 }
