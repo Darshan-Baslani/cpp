@@ -4,21 +4,22 @@
 using namespace std;
 
 vector<int> BFS(int n, vector<vector<int>> adj) {
-    int visited[n] = {0};
-    visited[0] = 1;
+    int visited[n+1] = {0};
     queue<int> q;
-    q.push(0); 
     vector<int> bfs;
+    q.push(1); // first node
+    bfs.push_back(1);
     while(!q.empty()) {
         int node = q.front();
-        q.pop();
-        bfs.push_back(node);
-        for(int edge: adj[node]){
+        visited[node] = 1;
+        for(int edge: adj[node]) {
             if(!visited[edge]){
-                q.push(edge);
                 visited[edge] = 1;
+                q.push(edge);
+                bfs.push_back(edge);
             }
         }
+        q.pop();
     }
     return bfs;
 }
@@ -27,7 +28,7 @@ int main() {
 
     // we will create graph of n nodes and m edges;
     int n = 5, m = 6;
-    vector<vector<int>> adj;
+    vector<vector<int>> adj(n+1);
     // manually creating edges
     adj[1].push_back(2);
     adj[1].push_back(3);
@@ -46,6 +47,12 @@ int main() {
     for(int ele: bfs) {
         cout<<ele<<" ";
     }
+
+    // for(int i=0; i<adj.size(); i++) {
+    //     for(int j=0; j<adj[i].size(); j++) {
+    //         cout<<adj[i][j]<<" ";
+    //     }
+    // }
 
     return 0;
 }
